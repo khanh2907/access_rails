@@ -17,6 +17,7 @@
 //= require parsley
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require cocoon
 //= require_tree .
 
 function ready() {

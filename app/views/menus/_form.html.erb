@@ -1,0 +1,31 @@
+<%= simple_form_for @menu, :url => store_menus_path, :method => :post do |f| %>
+<%= f.error_notification %>
+
+<div class="form-inputs">
+  <%= f.input :name %>
+  <%= f.input :description %>
+
+
+  <h3>Items</h3>
+  <%= link_to_add_association f, :items, :"data-association-insertion-node" => ".itemsTable tbody",:"data-association-insertion-method" => "append" do %>
+    <btn class="btn btn-default">Add New Item</btn>
+  <% end %>
+  <table class="itemsTable table">
+    <thead>
+    <th width="300">Name</th>
+    <th width="500">Description</th>
+    <th width="300">Price</th>
+    <th></th>
+    </thead>
+    <tbody>
+    <%= f.simple_fields_for :items do |i|%>
+      <%= render 'item_fields', :f => i%>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="form-actions">
+    <%= f.button :submit %>
+</div>
+<% end %>
