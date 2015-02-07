@@ -27,6 +27,33 @@ body {
   color: #1b1b1b;
 }
 
+body#landing {
+  background: url(/root_bg.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.navbar .brand {
+  width: 100px;
+  padding: 15px 20px 15px;
+  margin-right: 70px;
+  margin-left: 0px;
+  background: transparent url(/logo.png) no-repeat left 5px;
+  display: inline-block;
+  text-indent: 0%;
+  white-space: nowrap;
+  overflow: visible;
+  padding-right: 0;
+  padding-left: 60px;
+  text-align: left;
+  color: #FFF;
+  text-shadow: none;
+  text-decoration: none;
+  font-weight: 400;
+}
+
 .well, .btn, .form-control{
   border-radius: 0 !important;
 }
@@ -51,7 +78,7 @@ body {
 }
 
 .avatar {
-  background-image: url(/avatar.png);
+  background-image: url(/logo_large.png);
   background-repeat: no-repeat;
   background-size: 100px 100px;
   margin: 30px auto 10px;
