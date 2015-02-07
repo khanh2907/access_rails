@@ -5,6 +5,8 @@
 <div class="form-inputs">
   <%= f.input :name %>
   <%= f.input :description %>
+  <input type="checkbox" name="activate" id="activate" value="1" <%= 'checked' if @store.active_menu_id == @menu.id %>>
+  <label for="activate">Set as active menu for this store</label>
 
 
   <h3>Items</h3>

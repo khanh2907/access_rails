@@ -8,16 +8,21 @@
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <% @store.menus.each_with_index do |menu, index| %>
+    <% is_active_menu = @store.active_menu_id == menu.id%>
     <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="heading-<%=index%>">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-<%=index%>" aria-expanded="false" aria-controls="collapse-<%=index%>">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-<%=index%>"
+           aria-expanded="<%=  is_active_menu ? 'true' : 'false' %>" aria-controls="collapse-<%=index%>">
           <h4 class="panel-title">
             <%= menu.name %>
             <small>(<%= menu.items.count %> items)</small>
+            <% if is_active_menu %>
+              <span class="label label-success">Active</span>
+            <% end %>
           </h4>
         </a>
       </div>
-      <div id="collapse-<%=index%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-<%=index%>">
+      <div id="collapse-<%=index%>" class="panel-collapse collapse <%= 'in' if is_active_menu %>" role="tabpanel" aria-labelledby="heading-<%=index%>">
         <div class="panel-body">
           <div class="menu-buttons">
             <h4> <%= menu.name %>
