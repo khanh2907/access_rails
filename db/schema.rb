@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207111844) do
+ActiveRecord::Schema.define(version: 20150207134849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20150207111844) do
     t.string   "name"
     t.text     "description"
     t.float    "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "loyalty_programs", force: true do |t|
+    t.integer  "store_id"
+    t.integer  "s_id"
+    t.integer  "s_type"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "s_required"
+    t.float    "s_discount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

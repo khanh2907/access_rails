@@ -50,8 +50,4 @@ class BeaconsController < ApplicationController
   def beacon_params
     params.require(:beacon).permit(:b_id, :menu_id)
   end
-
-  def activate_param
-    params[:activate].to_i
-  end
 end

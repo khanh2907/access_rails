@@ -1,0 +1,64 @@
+<%= simple_form_for @loyalty_program, :url => @loyalty_program.new_record? ? store_loyalty_programs_path : store_loyalty_program_path(@store, @loyalty_program),
+                    :method => @loyalty_program.new_record? ? :post : :patch, :html => {:data => {:validate => 'parsley'}} do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.label :start_date %>
+    <div class="input-group datepicker">
+      <span class="input-group-addon datepickerbutton">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+      <%= f.text_field :start_date, :class => 'form-control', "data-format" => 'dd/MM/yyyy', :required => true, :value => (@loyalty_program.start_date.strftime('%d/%m/%Y') unless @loyalty_program.start_date.nil?) %>
+      </span>
+    </div>
+
+    <%= f.label :end_date %>
+    <div class="input-group datepicker">
+      <span class="input-group-addon datepickerbutton">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+      <%= f.text_field :end_date, :class => 'form-control', "data-format" => 'dd/MM/yyyy', :required => true, :value => (@loyalty_program.end_date.strftime('%d/%m/%Y') unless @loyalty_program.end_date.nil?) %>
+      </span>
+    </div>
+
+    <label for="loyalty_program_s_type">On an item or menu?</label>
+    <%= f.select :s_type, options_from_collection_for_select([[0, 'Item'], [1, 'Menu']], :first, :last, selected: @loyalty_program[:s_type]), {}, class: 'form-control' %>
+    <br>
+    <div id="s_id_item" <%= 'hidden' unless @loyalty_program.item? %>>
+      <label for="loyalty_program_s_id">Item</label>
+      <%= f.select :s_id, options_from_collection_for_select(Item.where(menu_id: @store.menus.pluck(:id)), :id, :name, selected: @loyalty_program.item? ? @loyalty_program[:s_id] : nil), {}, class: 'form-control' %>
+    </div>
+    <div id="s_id_menu" <%= 'hidden' unless @loyalty_program.menu? %>>
+      <label for="loyalty_program_s_id">Menu</label>
+      <%= f.select :s_id, options_from_collection_for_select(@store.menus, :id, :name, selected: @loyalty_program.menu? ? @loyalty_program[:s_id] : nil), {}, class: 'form-control' %>
+    </div>
+    <br>
+    <%= f.input :s_required, :label => 'Required amount' %>
+    <%= f.input :s_discount, :label => 'Discount (%)' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+    <%= link_to 'Back', store_path(@store), :class => 'btn btn-danger' %>
+  </div>
+<% end %>
+
+<script>
+  $('.datepicker').datetimepicker({
+    format: 'DD/MM/YYYY'
+  });
+
+  $('#loyalty_program_s_type').on('change', function(e) {
+    if($(this).val() == '0') {
+      $('#s_id_menu').hide();
+      $('#s_id_menu').removeAttr('id');
+      $('#s_id_item').show();
+      $('#s_id_item').attr('id', 'loyalty_program_s_id');
+    } else {
+      $('#s_id_item').hide();
+      $('#s_id_item').removeAttr('id');
+      $('#s_id_menu').show();
+      $('#s_id_menu').attr('id', 'loyalty_program_s_id');
+    }
+  });
+</script>

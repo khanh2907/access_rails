@@ -4,7 +4,7 @@
 
   <div class="form-inputs">
     <%= f.input :b_id, :label => 'Beacon ID' %>
-    <label for="beacon_menu_id">Survey</label>
+    <label for="beacon_menu_id">Menu</label>
     <%= f.select :menu_id, options_from_collection_for_select(@store.menus, :id, :name, selected: @beacon[:menu_id]), {}, class: 'form-control' %>
     <br>
   </div>

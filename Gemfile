@@ -21,6 +21,8 @@ gem 'font-awesome-rails'
 gem 'parsley-rails'
 gem 'cocoon'
 gem 'simplify'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 group :production do
   gem 'therubyracer'

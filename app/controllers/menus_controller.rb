@@ -51,8 +51,4 @@ class MenusController < ApplicationController
   def menu_params
     params.require(:menu).permit(:name, :description, :items_attributes => [:name, :description, :price, :id, :_destroy])
   end
-
-  def activate_param
-    params[:activate].to_i
-  end
 end

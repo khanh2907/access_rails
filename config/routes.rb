@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :stores do
     resources :menus
     resources :beacons
+    resources :loyalty_programs
   end
 
   root to: 'visitors#index'

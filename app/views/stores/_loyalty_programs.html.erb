@@ -1,0 +1,40 @@
+<h2>
+  Loyalty Programs
+  <%= link_to new_store_loyalty_program_path(@store), :class => 'btn btn-default' do %>
+    <%= fa_icon 'plus'%> Add New Loyalty Program
+  <% end %>
+</h2>
+
+<table class="table">
+  <thead>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Type</th>
+    <th>Item/Menu</th>
+    <th>Required Purchases</th>
+    <th>Discount (%)</th>
+    <th></th>
+  </thead>
+  <tbody>
+  <% @store.loyalty_programs.each do |lp| %>
+    <tr>
+      <td><%= lp.start_date %></td>
+      <td><%= lp.end_date %></td>
+      <td><%= lp.s_type %></td>
+      <td><%= lp.s_id %></td>
+      <td><%= lp.s_required %></td>
+      <td><%= lp.s_discount %></td>
+      <td>
+        <%= link_to edit_store_loyalty_program_path(@store, lp), :class => 'btn btn-primary btn-xs' do %>
+          <%= fa_icon 'pencil' %> Edit
+        <% end %>
+        <%= link_to store_loyalty_program_path(@store, lp), method: :delete, data: { confirm: 'Are you sure?' },
+                    :class => 'btn btn-danger btn-xs' do %>
+          <%= fa_icon 'trash' %> Delete
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
