@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users
 
   get 'api/v1/beacon/get' => 'api/v1/beacon#get'
+  post 'api/v1/payment/pay' => 'api/v1/payment#pay'
 end

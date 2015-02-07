@@ -19,8 +19,8 @@ gem 'simple_form'
 gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'font-awesome-rails'
 gem 'parsley-rails'
-gem 'bootstrap-sass'
 gem 'cocoon'
+gem 'simplify'
 
 group :production do
   gem 'therubyracer'
