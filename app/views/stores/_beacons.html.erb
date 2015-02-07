@@ -1,0 +1,43 @@
+<h2>
+  Beacons
+  <%= link_to new_store_beacon_path(@store), :class => 'btn btn-default' do %>
+    <%= fa_icon 'plus'%> Add New Beacon
+  <% end %>
+</h2>
+
+<% if @store.beacons.count == 0 %>
+  <div class="text-center">
+    <%= link_to new_store_beacon_path(@store), :class => 'btn btn-default btn-lg' do %>
+      <%= fa_icon 'plus'%> Add New Beacon
+    <% end %>
+    <br>
+    <small>This store does not have any beacons. Click the "Add New Beacon" to create one.</small>
+  </div>
+<% else %>
+
+
+<table class="table">
+  <thead>
+  <th>Beacon ID</th>
+  <th>Menu</th>
+  <th></th>
+  </thead>
+  <tbody>
+  <% @store.beacons.each do |beacon| %>
+    <tr>
+      <td><%= beacon.b_id %></td>
+      <td><%= Menu.find(beacon.menu_id).name %></td>
+      <td>
+        <%= link_to edit_store_beacon_path(@store, beacon), :class => 'btn btn-primary btn-xs' do %>
+          <%= fa_icon 'pencil' %> Edit
+        <% end %>
+        <%= link_to store_beacon_path(@store, beacon), method: :delete, data: { confirm: 'Are you sure?' },
+                    :class => 'btn btn-danger btn-xs' do %>
+          <%= fa_icon 'trash' %> Delete
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>

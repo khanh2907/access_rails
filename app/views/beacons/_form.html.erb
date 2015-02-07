@@ -1,0 +1,16 @@
+<%= simple_form_for @beacon, :url => @beacon.new_record? ? store_beacons_path : store_beacon_path(@store, @beacon),
+                    :method => @beacon.new_record? ? :post : :patch, :html => {:data => {:validate => 'parsley'}} do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :b_id, :label => 'Beacon ID' %>
+    <label for="beacon_menu_id">Survey</label>
+    <%= f.select :menu_id, options_from_collection_for_select(@store.menus, :id, :name, selected: @beacon[:menu_id]), {}, class: 'form-control' %>
+    <br>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+    <%= link_to 'Back', store_path(@store), :class => 'btn btn-danger' %>
+  </div>
+<% end %>

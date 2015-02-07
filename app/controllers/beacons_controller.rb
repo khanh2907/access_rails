@@ -1,26 +1,25 @@
-class MenusController < ApplicationController
+class BeaconsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_store
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_beacon, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
 
   def show
-    respond_with(@menu)
+    respond_with(@beacon)
   end
 
   def new
-    @menu = @store.menus.new
-    @menu.items.build
-    respond_with(@menu)
+    @beacon = @store.beacons.new
+    respond_with(@beacon)
   end
 
   def edit
   end
 
   def create
-    @menu = @store.menus.new(menu_params)
-    if @menu.save
+    @beacon = @store.beacons.new(beacon_params)
+    if @beacon.save
       flash[:notice] = 'Menu was successfully created.'
     end
 
@@ -28,14 +27,14 @@ class MenusController < ApplicationController
   end
 
   def update
-    if @menu.update_attributes!(menu_params)
+    if @beacon.update(beacon_params)
       flash[:notice] = 'Menu was successfully updated.'
     end
     respond_with(@store)
   end
 
   def destroy
-    @menu.destroy
+    @beacon.destroy
     respond_with(@store)
   end
 
@@ -44,12 +43,12 @@ class MenusController < ApplicationController
     @store = Store.find(params[:store_id])
   end
 
-  def set_menu
-    @menu = Menu.find(params[:id])
+  def set_beacon
+    @beacon = Beacon.find(params[:id])
   end
 
-  def menu_params
-    params.require(:menu).permit(:name, :description, :items_attributes => [:name, :description, :price, :id, :_destroy])
+  def beacon_params
+    params.require(:beacon).permit(:b_id, :menu_id)
   end
 
   def activate_param

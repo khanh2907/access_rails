@@ -22,8 +22,19 @@
 
   <hr>
   <%= render 'menus'%>
+
+  <hr>
+  <% if @store.menus.count == 0 %>
+    <h2>Beacons</h2>
+    <small>You have to a menu before you can add a beacon.</small>
+  <% else %>
+    <%= render 'beacons'%>
+  <% end %>
+
+  <br><br><br> <!--TODO: this is bad, you should not do this Khanh....-->
   <%= link_to stores_path, :class => 'btn btn-default' do %>
     Back
   <% end %>
+
 </div>
 
