@@ -20,12 +20,12 @@ class MenusController < ApplicationController
 
   def create
     @menu = @store.menus.new(menu_params)
-    flash[:notice] = 'Store was successfully created.' if @store.save
+    flash[:notice] = 'Menu was successfully created.' if @menu.save
     respond_with(@store)
   end
 
   def update
-    flash[:notice] = 'Store was successfully updated.' if @store.update(store_params)
+    flash[:notice] = 'Menu was successfully updated.' if @menu.update(menu_params)
     respond_with(@store)
   end
 
@@ -45,5 +45,9 @@ class MenusController < ApplicationController
 
   def menu_params
     params.require(:menu).permit(:name, :description, :items_attributes => [:name, :description, :price])
+  end
+
+  def activate_param
+    params[:activate].to_i
   end
 end
