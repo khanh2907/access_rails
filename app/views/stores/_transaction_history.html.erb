@@ -1,0 +1,21 @@
+<h2>Transaction History</h2>
+
+<table class="table">
+  <thead>
+    <th>Time</th>
+    <th>User</th>
+    <th>Item</th>
+    <th>Amount</th>
+  </thead>
+  <tbody>
+    <% @store.transaction_histories.each do |th|%>
+    <tr>
+      <td><%= th.payment_time.localtime.strftime('%A, %d %b %Y %l:%M %p') %></td>
+      <td><%= th.payer_id %></td>
+      <td><%= Item.find(th.item_id).name %></td>
+      <td><%= '$%.2f' % (th.amount/1000) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>

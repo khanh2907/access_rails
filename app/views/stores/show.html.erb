@@ -20,16 +20,35 @@
     <%= @store.user.email %>
   </p>
 
-  <hr>
-  <%= render 'menus'%>
+  <div role="tabpanel">
 
-  <hr>
-  <% if @store.menus.count == 0 %>
-    <h2>Beacons</h2>
-    <small>You have to a menu before you can add a beacon.</small>
-  <% else %>
-    <%= render 'beacons'%>
-  <% end %>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#menus" aria-controls="menus" role="tab" data-toggle="tab">Menus</a></li>
+      <li role="presentation"><a href="#beacons" aria-controls="beacons" role="tab" data-toggle="tab">Beacons</a></li>
+      <li role="presentation"><a href="#transaction-history" aria-controls="transaction-history" role="tab" data-toggle="tab">Transaction History</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="menus">
+        <%= render 'menus'%>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="beacons">
+        <% if @store.menus.count == 0 %>
+          <h2>Beacons</h2>
+          <small>You have to a menu before you can add a beacon.</small>
+        <% else %>
+          <%= render 'beacons'%>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="transaction-history">
+        <%= render 'transaction_history'%>
+      </div>
+    </div>
+
+  </div>
+
 
   <br><br><br> <!--TODO: this is bad, you should not do this Khanh....-->
   <%= link_to stores_path, :class => 'btn btn-default' do %>
