@@ -3,7 +3,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :b_id, :label => 'Beacon ID' %>
+    <%= f.input :b_id, :label => 'Beacon ID', :input_html => {class: 'form-control',
+                                                              :required => true,
+                                                              "data-parsley-pattern" => '/^\d+-\d+$/',
+                                                              "data-parsley-pattern-message" => 'Invalid beacon ID. You must enter a number hyphen number like "123-456"'} %>
     <label for="beacon_menu_id">Menu</label>
     <%= f.select :menu_id, options_from_collection_for_select(@store.menus, :id, :name, selected: @beacon[:menu_id]), {}, class: 'form-control' %>
     <br>
