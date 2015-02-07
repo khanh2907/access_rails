@@ -7,7 +7,7 @@ module Api::V1
     # take beacon id
     # return menu json
     def get
-      beacon = Beacon.find(params[:id].to_i)
+      beacon = Beacon.find_by_b_id(params[:id].to_i)
       if beacon
         @menu = Menu.find(beacon.menu_id)
         render template: 'api/v1/beacon/get', :layout => false
