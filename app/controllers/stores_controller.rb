@@ -17,8 +17,8 @@ class StoresController < ApplicationController
   end
 
   def new
-    authorize @store
     @store = current_user.stores.new
+    authorize @store
     respond_with(@store)
   end
 
