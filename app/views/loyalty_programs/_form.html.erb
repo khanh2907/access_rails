@@ -48,17 +48,18 @@
     format: 'DD/MM/YYYY'
   });
 
+  $('#s_id_menu select').removeAttr('name');
   $('#loyalty_program_s_type').on('change', function(e) {
     if($(this).val() == '0') {
       $('#s_id_menu').hide();
-      $('#s_id_menu').removeAttr('id');
+      $('#s_id_menu select').removeAttr('name');
       $('#s_id_item').show();
-      $('#s_id_item').attr('id', 'loyalty_program_s_id');
+      $('#s_id_item select').attr('name', 'loyalty_program[s_id]');
     } else {
       $('#s_id_item').hide();
-      $('#s_id_item').removeAttr('id');
+      $('#s_id_item select').removeAttr('name');
       $('#s_id_menu').show();
-      $('#s_id_menu').attr('id', 'loyalty_program_s_id');
+      $('#s_id_menu select').attr('name', 'loyalty_program[s_id]');
     }
   });
 </script>

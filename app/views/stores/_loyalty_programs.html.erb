@@ -21,7 +21,9 @@
       <td><%= lp.start_date %></td>
       <td><%= lp.end_date %></td>
       <td><%= lp.s_type %></td>
-      <td><%= lp.s_id %></td>
+      <td>
+        <%= lp.item? ? Item.find(lp.s_id).name : Menu.find(lp.s_id).name %>
+      </td>
       <td><%= lp.s_required %></td>
       <td><%= lp.s_discount %></td>
       <td>
