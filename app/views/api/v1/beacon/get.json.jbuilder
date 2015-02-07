@@ -1,6 +1,6 @@
 json.store do
 
-  json.extract! @menu.store, :name, :address
+  json.extract! @menu.store, :id, :name, :address
 
   json.menu do
     json.extract! @menu, :name, :description
