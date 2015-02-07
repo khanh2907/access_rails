@@ -22,6 +22,10 @@ gem 'parsley-rails'
 gem 'bootstrap-sass'
 gem 'cocoon'
 
+group :production do
+  gem 'therubyracer'
+end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

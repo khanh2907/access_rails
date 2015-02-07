@@ -19,10 +19,7 @@
     <strong>Owner:</strong>
     <%= @store.user.email %>
   </p>
-  <p>
-    <strong>Active Menu:</strong>
-    <%= @store.menus.find(@store.active_menu_id).name %>
-  </p>
+
   <hr>
   <%= render 'menus'%>
   <%= link_to stores_path, :class => 'btn btn-default' do %>
