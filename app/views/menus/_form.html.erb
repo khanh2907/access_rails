@@ -1,4 +1,5 @@
-<%= simple_form_for @menu, :url => store_menus_path, :method => :post do |f| %>
+<%= simple_form_for @menu, :url => store_menus_path,
+                    :method => :post, :html => {:data => {:validate => 'parsley'}} do |f| %>
 <%= f.error_notification %>
 
 <div class="form-inputs">
