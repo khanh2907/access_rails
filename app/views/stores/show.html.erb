@@ -1,5 +1,10 @@
 <div class="container">
-  <h1><%= @store.name %></h1>
+  <h1>
+    <%= @store.name %>
+    <%= link_to edit_store_path(@store), :class => 'btn btn-primary' do %>
+      <%= fa_icon 'pencil' %> Edit Store Details
+    <% end %>
+  </h1>
   <p>
     <strong>Name:</strong>
     <%= @store.name %>
@@ -16,8 +21,8 @@
   </p>
   <hr>
   <%= render 'menus'%>
-
-  <%= link_to 'Edit', edit_store_path(@store) %> |
-  <%= link_to 'Back', stores_path %>
-
+  <%= link_to stores_path, :class => 'btn btn-default' do %>
+    Back
+  <% end %>
 </div>
+

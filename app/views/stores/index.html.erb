@@ -1,6 +1,11 @@
 
 <div class="container">
-<h1>My Stores</h1>
+<h1>
+  My Stores
+  <%= link_to new_store_path, :class => 'btn btn-default' do %>
+    <%= fa_icon 'plus'%> New Store
+  <% end %>
+</h1>
 
 <table class="table">
   <thead>
@@ -29,8 +34,4 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Store', new_store_path %>
 </div>
