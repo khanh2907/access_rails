@@ -27,8 +27,8 @@ class StoresController < ApplicationController
   end
 
   def create
-    authorize @store
     @store = current_user.stores.new(store_params)
+    authorize @store
     flash[:notice] = 'Store was successfully created.' if @store.save
     respond_with(@store)
   end
