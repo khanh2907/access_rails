@@ -13,8 +13,8 @@
   <table class="itemsTable table">
     <thead>
     <th width="300">Name</th>
-    <th width="500">Description</th>
     <th width="300">Price</th>
+    <th width="500">Description</th>
     <th></th>
     </thead>
     <tbody>
@@ -26,6 +26,7 @@
 </div>
 
 <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+    <%= link_to 'Back', store_path(@store), :class => 'btn btn-danger' %>
 </div>
 <% end %>

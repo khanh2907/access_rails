@@ -1,0 +1,57 @@
+<h2>
+  Menus
+  <%= link_to new_store_menu_path(@store), :class => 'btn btn-default' do %>
+    <%= fa_icon 'plus'%> Add New Menu
+  <% end %>
+</h2>
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <% @store.menus.each_with_index do |menu, index| %>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="heading-<%=index%>">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-<%=index%>" aria-expanded="false" aria-controls="collapse-<%=index%>">
+          <h4 class="panel-title">
+            <%= menu.name %>
+            <small>(<%= menu.items.count %> items)</small>
+          </h4>
+        </a>
+      </div>
+      <div id="collapse-<%=index%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-<%=index%>">
+        <div class="panel-body">
+          <div class="menu-buttons">
+            <h4> <%= menu.name %>
+              <%= link_to edit_store_menu_path(@store, menu), :class => 'btn btn-primary btn-xs' do %>
+                <%= fa_icon 'pencil' %> Edit Menu
+              <% end %>
+              <%= link_to store_menu_path(@store, menu), :method => :delete,
+                          :data => { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-xs' do %>
+                <%= fa_icon 'trash' %> Delete Menu
+              <% end %>
+            </h4>
+          </div>
+          <div class="description">
+            <%= menu.description %>
+          </div>
+          <h3>Items</h3>
+          <table class="table">
+            <thead>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            </thead>
+            <tbody>
+            <% menu.items.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.price %></td>
+                <td><%= item.description %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

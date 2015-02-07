@@ -1,4 +1,5 @@
 <div class="container">
+  <h1><%= @store.name %></h1>
   <p>
     <strong>Name:</strong>
     <%= @store.name %>
@@ -13,35 +14,8 @@
     <strong>Owner:</strong>
     <%= @store.user.email %>
   </p>
-
-  <h2>Menus</h2>
-  <%= link_to 'Add New Menu', new_store_menu_path(@store), :class => 'btn btn-default pull-right' %>
-  <table class="table">
-    <thead>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Date Created</th>
-    <th></th>
-    </thead>
-    <tbody>
-    <% @store.menus.each do |menu| %>
-      <tr>
-        <td><%= menu.name %></td>
-        <td><%= menu.description %></td>
-        <td><%= menu.created_at.localtime %></td>
-        <td>
-          <%= link_to edit_store_menu_path(@store, menu), :class => 'btn btn-primary btn-xs' do %>
-            <%= fa_icon 'pencil' %> Edit Menu
-          <% end %>
-          <%= link_to store_menu_path(@store, menu), :method => :delete,
-                      :data => { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-xs' do %>
-            <%= fa_icon 'trash' %> Delete Menu
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <hr>
+  <%= render 'menus'%>
 
   <%= link_to 'Edit', edit_store_path(@store) %> |
   <%= link_to 'Back', stores_path %>
